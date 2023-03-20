@@ -1,0 +1,37 @@
+.page {
+  width: 50%;
+
+  min-width: 300px;
+  max-width: 400px;
+  background-color: #0f2b3c;
+}
+.fullpage {
+  display: flex;
+  height: 100vh;
+}
+.mynavbar {
+  z-index: 2;
+}
+.chatmediacontrol {
+  flex: 1;
+
+  background-size: cover !important;
+  background: url("./chatpage.jpg");
+}
+.centerc {
+  height: 100%;
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  color: rgb(165, 168, 170);
+}
+@media only screen and (max-width: 600px) {
+  .d_none {
+    display: none;
+  }
+  .page {
+    width: 100%;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,148 @@
+/* Made with love by Mutiullah Samim*/
+
+@import url("https://fonts.googleapis.com/css?family=Numans");
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+.login {
+  background-image: url("./background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: "Numans", sans-serif;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+
+.card {
+  height: 570px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.vcenter {
+  top: 50%;
+  position: relative;
+  -ms-transform: translateY(-50%);
+  transform: translateY(10%);
+}
+.card-header h3 {
+  color: white;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.input-group-prepend span {
+  width: 50px;
+  height: 100%;
+  background-color: #ffc312;
+  color: black;
+  border: 0 !important;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group-append span {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.imput-group {
+  margin: auto;
+  width: 90%;
+}
+.input-group-text {
+  height: 100%;
+}
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+  color: white;
+}
+
+.remember input {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.login_btn {
+  color: black;
+  background-color: #ffc312;
+  width: 100px;
+}
+
+.login_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}
+.footer {
+  color: white;
+}
+
+.google-btn {
+  width: 184px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.google-icon-wrapper {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+.google-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: 11px;
+  width: 18px;
+  height: 18px;
+}
+.btn-text {
+  float: right;
+  margin: 11px 11px 0 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+}
+.google-btn:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+.google-btn:active {
+  background: #1669f2;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+/* @media screen and (max-width: 1000px) {
+  .vcenter {
+    top: 45%;
+  }
+  .card {
+    transform: scale(2);
+  }
+} */
