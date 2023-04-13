@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./messagebox.css";
+import Picker from "emoji-picker-react";
 import axios from "axios";
 import { Skeleton } from "../skeleton";
 import { sender } from "../../../config/logic";
@@ -21,6 +22,8 @@ export const Messagebox = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState([]);
   const [typing, setTyping] = useState();
+  const [showPicker, setShowPicker] = useState(false);
+
   async function getMessages() {
     try {
       setLoading(true);
@@ -44,6 +47,9 @@ export const Messagebox = () => {
   }
   async function sendMessage() {
     if (message) {
+      var m = message;
+      setMessage("");
+      setShowPicker(false);
       try {
         // setLoading(true);
         const config = {
@@ -54,11 +60,10 @@ export const Messagebox = () => {
 
         const { data } = await axios.post(
           `/api/message`,
-          { chatId: selectedChat._id, content: message },
+          { chatId: selectedChat._id, content: m },
           config
         );
         //console.log(data);
-        setMessage("");
         // setLoading(false);
         socket.emit("new message", data);
         setInputHeight("40px");
@@ -135,6 +140,11 @@ export const Messagebox = () => {
       }
     });
   });
+  // const onEmojiClick = (event, emojiObject) => {
+  //   console.log(emojiObject);
+  //   setMessage((prevInput) => prevInput + emojiObject.emoji);
+  //   //setShowPicker(false);
+  // };
   return (
     <>
       {selectedChat ? (
@@ -190,6 +200,14 @@ export const Messagebox = () => {
               <Message messages={messages} height={inputHeight} />
             )
           )}
+          {showPicker && (
+            <Picker
+              pickerStyle={{ width: "100%" }}
+              onEmojiClick={(emojiObject) =>
+                setMessage((prevMsg) => prevMsg + emojiObject.emoji)
+              }
+            />
+          )}
           <div className="bottomPart">
             {typing && (
               <div className="typing">
@@ -197,14 +215,19 @@ export const Messagebox = () => {
                 <TypingAnimation />
               </div>
             )}
+
             <div id="input" className="input" style={{ height: inputHeight }}>
-              <div className="frontinput">
+              <div
+                className="frontinput"
+                onClick={() => setShowPicker((show) => !show)}
+              >
                 <i className="fa fain fa-smile-o fa-2x p-1 ps-2 " />
               </div>
               <textarea
                 rows={1}
                 id="txtArea"
                 value={message}
+                onClick={() => setShowPicker(false)}
                 onChange={handleChange}
                 className="sendInput scroll"
               />

@@ -163,11 +163,17 @@ textarea {
   position: absolute;
 }
 .bottomPart {
-  position: fixed;
-  right: 0;
-  left: 400px;
+  position: relative;
 
-  bottom: 5px;
+  bottom: 0;
+}
+
+.chatbox *,
+.chatbox *:before,
+.chatbox *:after {
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
 }
 .unread {
   position: absolute;
@@ -181,11 +187,17 @@ textarea {
   background-color: lightgreen;
   border-radius: 50%;
 }
-@media (max-width: 800px) {
+aside.EmojiPickerReact.epr-main {
+  height: 1000px !important;
+
+  /* width: 350px; */
+  margin-bottom: 2px;
+}
+/* @media (max-width: 800px) {
   .bottomPart {
     left: auto;
   }
-}
+} */
 @media (max-width: 600px) {
   .bottomPart {
     left: 0;
