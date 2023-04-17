@@ -13,11 +13,11 @@
 
 ## Features
 - The React Daily Chat App includes the following features:
-  * ** Real-time messaging using WebSockets **
-  * ** User authentication **
-  * ** User avatars **
-  * ** Message timestamps **
-  * ** Notification sounds for new messages **
+  * **Real-time messaging using WebSockets**
+  * **User authentication**
+  * **User avatars**
+  * **Message timestamps**
+  * **Notification sounds for new messages**
 
 ## Technologies Used
 - The React Daily Chat App was built using the following technologies:
