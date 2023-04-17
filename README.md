@@ -4,8 +4,8 @@
 ## Installation
 - To install and run the React Daily Chat App, follow these steps:
   1. Clone the repository to your local machine.
-  2. Install the necessary dependencies by running ''' npm install ''' in the project directory.
-  3. Start the development server by running ''' npm start '''.
+  2. Install the necessary dependencies by running ,`npm install` in the project directory.
+  3. Start the development server by running `npm start`.
   4. Open your browser and navigate to http://localhost:5000.
 
 ## Usage
