@@ -77,6 +77,7 @@ const Login = () => {
     const user = {
       name,
       email,
+      oauth: false,
       password,
     };
     sendData(user);
@@ -90,7 +91,7 @@ const Login = () => {
         },
       };
       let add = "/api/user";
-      if (state === "log in") add = "api/user/login";
+      if (state === "log in" || user.oauth) add = "api/user/login";
       const { data } = await axios.post(add, user, config);
       // console.log(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
@@ -113,7 +114,7 @@ const Login = () => {
             />
 
             <div className="card-header center">
-              <h3> Sign Up</h3>
+              <h3>{state === "sign up" ? "Sign Up" : "Login"}</h3>
             </div>
             <div className="card-body">
               <form onSubmit={submitHandler}>
