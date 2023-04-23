@@ -10,7 +10,7 @@ import { ProfileModal } from "../modals/profileModal";
 import { GroupModal } from "../modals/GroupModal";
 import socket from "../../../Socket.js";
 import { TypingAnimation } from "../../Animations/typingAnimation";
-var CompChat, Compperson;
+let CompChat, Compperson, typer;
 export const Messagebox = () => {
   const { user, setSelectedChat, selectedChat, chatsFetch, setChatsFetch } =
     ChatState();
@@ -23,7 +23,7 @@ export const Messagebox = () => {
   const [loading, setLoading] = useState([]);
   const [typing, setTyping] = useState();
   const [showPicker, setShowPicker] = useState(false);
-
+  var timer;
   async function getMessages() {
     try {
       setLoading(true);
@@ -88,24 +88,27 @@ export const Messagebox = () => {
     // if (element && element.scrollHeight != null)
     //   element.scrollTop = element.scrollHeight;
     if (!socketConnected) return;
-    if (typing !== user.result.name)
+    if (Compperson !== user.result.name) {
+      Compperson = user.result.name;
       socket.emit("typing", {
         room: selectedChat._id,
         person: user.result.name,
       });
-    let lastTypingTime = new Date().getTime();
-    var timerLength = 3000;
-    setTimeout(() => {
-      var timeNow = new Date().getTime();
-      var timeDiff = timeNow - lastTypingTime;
-      if (timeDiff >= timerLength) {
-        //console.log("stoptp1s");
-        socket.emit("stop typing", {
-          room: selectedChat._id,
-          person: user.result.name,
-        });
-      }
-    }, timerLength);
+      clearTimeout(timer); // clear the timer if it is already set
+      var lastTypingTime = new Date().getTime();
+      const timerLength = 3000;
+      timer = setTimeout(() => {
+        var timeNow = new Date().getTime();
+        var timeDiff = timeNow - lastTypingTime;
+        if (timeDiff >= timerLength) {
+          socket.emit("stop typing", {
+            room: selectedChat._id,
+            person: user.result.name,
+          });
+          Compperson = undefined;
+        }
+      }, timerLength);
+    }
   }
   useEffect(() => {
     if (selectedChat) getMessages();
@@ -123,11 +126,15 @@ export const Messagebox = () => {
     socket.on("typing", (person) => {
       setTyping(person);
       Compperson = person;
-      // console.log("stoptp", person, Compperson);
+      console.log("starttp", person, Compperson);
     });
     socket.on("stop typing", (person) => {
-      // console.log("stoptp", person, typing, Compperson);
-      if (person === Compperson) setTyping();
+      console.log("stoptp", person, typing, Compperson);
+      if (person === Compperson) {
+        setTyping();
+        Compperson = undefined;
+        console.log(Compperson);
+      }
     });
   }, []);
   useEffect(() => {
@@ -140,11 +147,7 @@ export const Messagebox = () => {
       }
     });
   });
-  // const onEmojiClick = (event, emojiObject) => {
-  //   console.log(emojiObject);
-  //   setMessage((prevInput) => prevInput + emojiObject.emoji);
-  //   //setShowPicker(false);
-  // };
+
   return (
     <>
       {selectedChat ? (

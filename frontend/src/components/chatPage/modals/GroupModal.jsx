@@ -178,7 +178,7 @@ export const GroupModal = ({ chat }) => {
         <div className={search ? "d-none" : ""}>
           <div className="modal-header">
             <h5 className=" modal-title" id="staticBackdropLabel">
-              Profile
+              {editable ? "Create Group" : "Group Info"}
             </h5>
             <button
               type="button"
