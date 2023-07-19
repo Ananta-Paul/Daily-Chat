@@ -1,4 +1,4 @@
-# [React Daily Chat App](https://daily-chat.onrender.com)
+# [React Daily Chat App](https://daily-chat-aqi4.onrender.com)
 - Welcome to the React Daily Chat App! This is a chat application built using React, Express, MongoDB, Socket.IO, and other libraries. The app features real-time messaging, user authentication with Google OAuth 2.0 and JWT token, group chat creation, typing indicators, and a profile section that allows users to edit their information.
 
 ## Installation
